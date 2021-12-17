@@ -7,10 +7,23 @@ set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} /MD")
 set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} /MDd")
 
 add_executable(${EXERCISENAME} ${SOURCES} ${HEADERS} ${SHADERS})
-if(WIN32)
-        target_link_libraries(${EXERCISENAME} "legacy_stdio_definitions.lib")
-endif()
 target_link_libraries(${EXERCISENAME} ${COMMON_LIBS})
 
 #--- data need to be copied to run folder
+file(COPY ${PROJECT_SOURCE_DIR}/src/terrain_vshader.glsl DESTINATION ${CMAKE_CURRENT_BINARY_DIR}/Shaders/)
+file(COPY ${PROJECT_SOURCE_DIR}/src/terrain_fshader.glsl DESTINATION ${CMAKE_CURRENT_BINARY_DIR}/Shaders/)
+file(COPY ${PROJECT_SOURCE_DIR}/src/water_vshader.glsl DESTINATION ${CMAKE_CURRENT_BINARY_DIR}/Shaders/)
+file(COPY ${PROJECT_SOURCE_DIR}/src/water_fshader.glsl DESTINATION ${CMAKE_CURRENT_BINARY_DIR}/Shaders/)
+file(COPY ${PROJECT_SOURCE_DIR}/src/skybox_vshader.glsl DESTINATION ${CMAKE_CURRENT_BINARY_DIR}/Shaders/)
+file(COPY ${PROJECT_SOURCE_DIR}/src/skybox_fshader.glsl DESTINATION ${CMAKE_CURRENT_BINARY_DIR}/Shaders/)
+file(COPY ${PROJECT_SOURCE_DIR}/src/sun_vshader.glsl DESTINATION ${CMAKE_CURRENT_BINARY_DIR}/Shaders/)
+file(COPY ${PROJECT_SOURCE_DIR}/src/sun_fshader.glsl DESTINATION ${CMAKE_CURRENT_BINARY_DIR}/Shaders/)
 
+# Texture imports
+file(COPY ${PROJECT_SOURCE_DIR}/src/Textures/grass.png DESTINATION ${CMAKE_CURRENT_BINARY_DIR})
+file(COPY ${PROJECT_SOURCE_DIR}/src/Textures/sand.png DESTINATION ${CMAKE_CURRENT_BINARY_DIR})
+file(COPY ${PROJECT_SOURCE_DIR}/src/Textures/rock.png DESTINATION ${CMAKE_CURRENT_BINARY_DIR})
+file(COPY ${PROJECT_SOURCE_DIR}/src/Textures/snow.png DESTINATION ${CMAKE_CURRENT_BINARY_DIR})
+file(COPY ${PROJECT_SOURCE_DIR}/src/Textures/water.png DESTINATION ${CMAKE_CURRENT_BINARY_DIR})
+#file(COPY ${PROJECT_SOURCE_DIR}/src/Textures/water_waves.png DESTINATION #${CMAKE_CURRENT_BINARY_DIR})
+#file(COPY ${PROJECT_SOURCE_DIR}/src/Textures/lunar.png DESTINATION #${CMAKE_CURRENT_BINARY_DIR})

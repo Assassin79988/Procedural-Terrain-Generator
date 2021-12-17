@@ -8,6 +8,7 @@ include(common/config.cmake)
 #--- Load third party packages
 include(common/Eigen.cmake)
 include(common/OpenCV.cmake)
+include(common/OpenGP.cmake)
 
 #--- OpenGL configuration
 include(common/OpenGL.cmake)
@@ -16,7 +17,7 @@ include(common/GLFW.cmake)
 
 
 #--- Subprojects
-#add_subdirectory(src)
+add_subdirectory(src)
 
 
 #--- C++ standard
